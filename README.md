@@ -1,7 +1,7 @@
 # makefiles
 
 Ce repo vise à centraliser la gestion des Makefiles utilisés à Skale-5. En effet, les Makefiles sont aujourd'hui peu mis à jour chez les clients.
-Ce repo est intégré comme un submodule git dans les repos d'infrastrcture client.
+Ce repo est intégré comme un submodule git dans les repos d'infrastructure client.
 
 Il est également utilisé pour les repos internes Skale 5 qui nécessitent un Makefile (par exemple les cookiecutters)
 
