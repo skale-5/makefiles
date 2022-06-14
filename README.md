@@ -22,7 +22,7 @@ ln -s makefiles/Makefile.XXXXX.mk Makefile
 ## Update le Makefile
 
 ```bash
-git submodule update --remote
+git pull --recurse-submodules
 ```
 
 ## Surcharger le Makefile sans faire de modifications sur le repo
