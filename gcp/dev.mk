@@ -17,3 +17,9 @@ check: check-terraform check-kubectl check-kustomize check-conftest check-kubeva
 cookiecutter-create: ## Create a new environment using Cookiecutter
 	@echo -e "$(OK_COLOR)[$(BANNER)] Create environment$(NO_COLOR)"
 	@./sk5-scripts/cookiecutter-add-env.sh
+
+.PHONY: ci
+ci:
+	@rm -rf gitlab-ci/gitlab-ci && \
+	git clone git@git.sk5.io:skale-5/gitlab-ci.git gitlab-ci/gitlab-ci && \
+	rm -rf gitlab-ci/gitlab-ci/.git

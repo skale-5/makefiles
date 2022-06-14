@@ -4,7 +4,5 @@ include makefiles/common/common.mk
 include makefiles/cookiecutter/cookiecutter.mk
 include makefiles/custom/*.mk
 
-include makefiles/common/dev.mk
-
 include makefiles/cookiecutter/dev.mk
 include makefiles/cookiecutter/custom/*.mk

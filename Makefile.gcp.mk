@@ -6,7 +6,6 @@ include makefiles/common/common.mk
 include makefiles/gcp/gcp.mk
 include makefiles/custom/*.mk
 
-include makefiles/common/dev.mk
 include makefiles/common/helm.mk
 include makefiles/common/kustomize.mk
 include makefiles/common/custom/*.mk
