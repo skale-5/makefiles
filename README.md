@@ -19,6 +19,11 @@ Créer un lien avec le Makefile voulu
 ln -s makefiles/Makefile.XXXXX.mk Makefile
 ```
 
+## Update le Makefile
+
+```bash
+git submodule update
+```
 
 ## Surcharger le Makefile sans faire de modifications sur le repo
 
