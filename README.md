@@ -10,7 +10,7 @@ Il est également utilisé pour les repos internes Skale 5 qui nécessitent un M
 Ajouter le submodule
 
 ```bash
-git add submodule git@git.sk5.io:skale-5/makefiles.git
+git submodule add git@git.sk5.io:skale-5/makefiles.git
 ```
 
 Créer un lien avec le Makefile voulu
