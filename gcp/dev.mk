@@ -19,7 +19,7 @@ cookiecutter-create: ## Create a new environment using Cookiecutter
 	@./sk5-scripts/cookiecutter-add-env.sh
 
 .PHONY: ci
-ci:
+ci: ## Regen CI (use https://git.sk5.io/skale-5/gitlab-ci)
 	@rm -rf gitlab-ci/gitlab-ci && \
 	git clone git@git.sk5.io:skale-5/gitlab-ci.git gitlab-ci/gitlab-ci && \
 	rm -rf gitlab-ci/gitlab-ci/.git
