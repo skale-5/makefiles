@@ -2,19 +2,19 @@
 
 include gcp.*.mk
 
-include common/common.mk
-include gcp/gcp.mk
-include custom/*.mk
+include makefiles/common/common.mk
+include makefiles/gcp/gcp.mk
+include makefiles/custom/*.mk
 
-include common/helm.mk
-include common/kustomize.mk
-include common/custom/*.mk
+include makefiles/common/helm.mk
+include makefiles/common/kustomize.mk
+include makefiles/common/custom/*.mk
 
 
-include gcp/ansible.mk
-include gcp/diagrams.mk
-include gcp/dev.mk
-include gcp/gcloud.mk
-include gcp/packer.mk
-include gcp/terraform.mk
-include gcp/custom/*.mk
+include makefiles/gcp/ansible.mk
+include makefiles/gcp/diagrams.mk
+include makefiles/gcp/dev.mk
+include makefiles/gcp/gcloud.mk
+include makefiles/gcp/packer.mk
+include makefiles/gcp/terraform.mk
+include makefiles/gcp/custom/*.mk

@@ -1,1 +1,1 @@
-custom/*.mk
+**/custom/*.mk
