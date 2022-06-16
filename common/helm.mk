@@ -18,20 +18,16 @@ helm-deps: guard-SERVICE ## Install Helm chart dependencies (SERVICE=xxx)
 .PHONY: helm-values
 helm-values: guard-SERVICE ## Show Helm values for the selected service (SERVICE=xxx)
 	@source $(SERVICE)/chart.sh && \
-		if [[ $$CHART_REPO_URL == https://* ]]; then \
-			if [ ! -n "$(SKIP_DEPS)" ]; then \
-				echo -e "I will pull deps for you, next time you can use SKIP_DEPS=true "; \
-				([ ! -f "$(SERVICE)/Chart.yaml" ] && \
-				helm repo add $$CHART_REPO_NAME $$CHART_REPO_URL && \
-				helm repo update) || \
-				([ -f "$(SERVICE)/Chart.yaml" ] && \
-				helm dependency update $(SERVICE) || \
-				echo "No dependencies found."); \
-			fi; \
-			helm show values $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME}; \
-		else \
-			helm show values $$CHART_REPO_URL; \
-		fi
+		if [ ! -n "$(SKIP_DEPS)" ]; then \
+			echo -e "I will pull deps for you, next time you can use SKIP_DEPS=true "; \
+			([ ! -f "$(SERVICE)/Chart.yaml" ] && \
+			helm repo add $$CHART_REPO_NAME $$CHART_REPO_URL && \
+			helm repo update) || \
+			([ -f "$(SERVICE)/Chart.yaml" ] && \
+			helm dependency update $(SERVICE) || \
+			echo "No dependencies found."); \
+		fi; \
+		helm show values $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME}
 
 .PHONY: helm-template
 helm-template: guard-SERVICE guard-ENV ## Render chart templates locally and display the output. (SERVICE=xxx ENV=xxx)
