@@ -11,9 +11,12 @@ helm-deps: guard-SERVICE ## Install Helm chart dependencies (SERVICE=xxx)
 			mkdir -p $(SERVICE)/charts/ && \
 			tar -czf $(SERVICE)/charts/$$CHART_REPO_NAME-$$CHART_VERSION.tgz --directory=$$CHART_REPO_URL . ; \
 		else \
+			([ ! -f "$(SERVICE)/Chart.yaml" ] && \
 			helm repo add $$CHART_REPO_NAME $$CHART_REPO_URL && \
-			helm repo update && \
-			[ -f "$(SERVICE)/Chart.yaml" ] && helm dependency update $(SERVICE) || echo "No dependencies found."; \
+			helm repo update) || \
+			([ -f "$(SERVICE)/Chart.yaml" ] && \
+			helm dependency update $(SERVICE) || \
+			echo "No dependencies found."); \
 		fi
 
 .PHONY: helm-values
@@ -24,9 +27,12 @@ helm-values: guard-SERVICE ## Show Helm values for the selected service (SERVICE
 		else \
 			if [ ! -n "$(SKIP_DEPS)" ]; then \
 				echo -e "I will pull deps for you, next time you can use SKIP_DEPS=true "; \
+				([ ! -f "$(SERVICE)/Chart.yaml" ] && \
 				helm repo add $$CHART_REPO_NAME $$CHART_REPO_URL && \
-				helm repo update && \
-				[ -f "$(SERVICE)/Chart.yaml" ] && helm dependency update $(SERVICE) || echo "No dependencies found."; \
+				helm repo update) || \
+				([ -f "$(SERVICE)/Chart.yaml" ] && \
+				helm dependency update $(SERVICE) || \
+				echo "No dependencies found."); \
 			fi; \
 			helm show values $$CHART_REPO_NAME/$$CHART_NAME; \
 		fi
