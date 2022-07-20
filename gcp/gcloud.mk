@@ -20,3 +20,27 @@ gcloud-bucket-create: guard-ENV ## Create bucket for bootstrap
 .PHONY: gcloud-kube-credentials
 gcloud-kube-credentials: guard-ENV ## Generate credentials
 	@gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT)
+
+.PHONY: gcloud-os-login
+gcloud-oslogin: guard-FILE # Set SSH key in Google account (to use OSlogin)
+	@gcloud compute os-login ssh-keys add --key-file=$(FILE)
+
+.PHONY: ssh
+ssh: guard-ENV guard-NAME # Use SSH through Gcloud (to use with OSLogin and IAP)
+	@export CLOUDSDK_PYTHON_SITEPACKAGES=1 \
+	&& gcloud compute ssh --tunnel-through-iap --project $(GCP_PROJECT) $(NAME)
+
+.PHONY: scp # Use SCP through Gcloud (to use with OSLogin and IAP)
+scp: guard-ENV guard-SRC guard-DEST
+	@export CLOUDSDK_PYTHON_SITEPACKAGES=1 \
+	&& gcloud compute scp --tunnel-through-iap --recurse --project $(GCP_PROJECT) $(SRC) $(DEST)
+
+
+.PHONY: start-bastion-proxy
+start-bastion-proxy: # Start SSH tunnel via the bastion (to use with OSLogin and IAP)
+	@export CLOUDSDK_PYTHON_SITEPACKAGES=1 \
+	&& gcloud compute ssh --tunnel-through-iap --project $(GCP_PROJECT_${EXPLOIT_ENV}) $(BASTION_NAME) -- -L 1337:127.0.0.1:8888 -D 9991 -N -q -f
+
+.PHONY: stop-bastion-proxy
+stop-bastion-proxy: # Stop SSH tunnel via the bastion (to use with OSLogin and IAP)
+	@kill $$(lsof -i tcp:1337 -t)
