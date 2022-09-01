@@ -5,7 +5,7 @@ Ce repo est intégré comme un submodule git dans les repos d'infrastructure cli
 
 Il est également utilisé pour les repos internes Skale 5 qui nécessitent un Makefile (par exemple les cookiecutters)
 
-## Installer le Makefile dans un repo client existant
+## Installer le Makefile dans un repo client existant (fichier .gitmodules absent)
 
 Ajouter le submodule
 
@@ -19,10 +19,11 @@ Créer un lien avec le Makefile voulu
 ln -s makefiles/Makefile.XXXXX.mk Makefile
 ```
 
-## Update les submodules
+
+## Update les submodules chez un client déjà configuré (fichier .gitmodules présent)
 
 ```bash
-git submodule foreach git pull origin main
+git submodule update --init --recursive
 ```
 
 ## Surcharger le Makefile sans faire de modifications sur le repo
