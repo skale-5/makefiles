@@ -6,3 +6,5 @@ include makefiles/custom/*.mk
 
 include makefiles/cookiecutter/dev.mk
 include makefiles/cookiecutter/custom/*.mk
+
+-include $(HOME)/.config/makefiles/*.mk
