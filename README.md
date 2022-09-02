@@ -20,10 +20,15 @@ ln -s makefiles/Makefile.XXXXX.mk Makefile
 ```
 
 
-## Update les submodules chez un client déjà configuré (fichier .gitmodules présent)
+## Initialiser les submodules chez un client déjà configuré (fichier .gitmodules présent)
 
 ```bash
 git submodule update --init --recursive
+```
+
+## Mettre à jour les submodules vers la dernière version
+```bash
+git submodule foreach git pull origin main
 ```
 
 ## Surcharger le Makefile sans faire de modifications sur le repo
