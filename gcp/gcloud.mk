@@ -28,13 +28,12 @@ gcloud-oslogin: guard-FILE ## Set SSH key in Google account (to use OSlogin) (FI
 .PHONY: ssh
 ssh: guard-ENV guard-NAME guard-ZONE ## Use SSH through Gcloud (to use with OSLogin and IAP) (ENV=xxx, NAME=xxx, ZONE=xxxx)
 	@export CLOUDSDK_PYTHON_SITEPACKAGES=1 \
-	&& gcloud compute ssh --tunnel-through-iap --project $(GCP_PROJECT) --zone $(ZONE) $(NAME)
+	&& gcloud compute ssh --tunnel-through-iap --project $(GCP_PROJECT) --zone $(ZONE) $(NAME) $(SSH_OPTIONS)
 
 .PHONY: scp
 scp: guard-ENV guard-SRC guard-DEST guard-ZONE ## Use SCP through Gcloud (to use with OSLogin and IAP) (ENV=xxx, SRC=xxx, DEST=xxx, ZONE=xxxx)
 	@export CLOUDSDK_PYTHON_SITEPACKAGES=1 \
 	&& gcloud compute scp --tunnel-through-iap --recurse --zone $(ZONE) --project $(GCP_PROJECT) $(SRC) $(DEST)
-
 
 .PHONY: start-bastion-proxy
 start-bastion-proxy: ## Start SSH tunnel via the bastion (to use with OSLogin and IAP)
