@@ -39,7 +39,7 @@ scp: guard-ENV guard-SRC guard-DEST ## Use SCP through Gcloud (to use with OSLog
 .PHONY: start-bastion-proxy
 start-bastion-proxy: ## Start SSH tunnel via the bastion (to use with OSLogin and IAP)
 	@export CLOUDSDK_PYTHON_SITEPACKAGES=1 \
-	&& gcloud compute ssh --tunnel-through-iap --project $(GCP_PROJECT_${EXPLOIT_ENV}) $(BASTION_NAME) -- -L 1337:127.0.0.1:8888 -L 1338:127.0.0.1:22 -D 9991 -N -q -f
+	&& gcloud compute ssh --tunnel-through-iap --project $(GCP_PROJECT_${EXPLOIT_ENV}) --zone $(GCP_ZONE_BASTION_${EXPLOIT_ENV}) $(BASTION_NAME) -- -L 1337:127.0.0.1:8888 -L 1338:127.0.0.1:22 -D 9991 -N -q -f
 
 .PHONY: stop-bastion-proxy
 stop-bastion-proxy: ## Stop SSH tunnel via the bastion (to use with OSLogin and IAP)
