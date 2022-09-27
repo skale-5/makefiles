@@ -6,7 +6,7 @@
 
 .PHONY: terraform-show
 terraform-show: guard-SERVICE guard-ENV ## Show infrastructure (SERVICE=xxx ENV=xxx)
-	@echo -e "$(OK_COLOR)[$(APP)] Show infrastructure$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)[$(BANNER)] Show infrastructure$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
 		&& terraform init -reconfigure -backend-config=backend-vars/$(ENV).tfvars \
 		&& terraform show
