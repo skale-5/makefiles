@@ -7,6 +7,7 @@ include makefiles/gcp/gcp.mk
 include makefiles/custom/*.mk
 
 include makefiles/common/helm.mk
+include makefiles/common/helm-legacy.mk
 include makefiles/common/kustomize.mk
 include makefiles/common/custom/*.mk
 
