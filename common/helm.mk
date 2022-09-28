@@ -36,7 +36,7 @@ helm-template: guard-SERVICE guard-ENV ## Render chart templates locally and dis
 		helm template $${CHART_RELEASE_NAME:-${lastword ${subst /, ,${CHART_PATH}}}} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION || \
-		helm template $${CHART_RELEASE_NAME:-${CHART_NAME}} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
+		helm template $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION)
 
@@ -47,7 +47,7 @@ helm-validate: guard-SERVICE guard-ENV kubernetes-check-context ## Simulate the 
 		helm upgrade --install $${CHART_RELEASE_NAME:-${lastword ${subst /, ,${CHART_PATH}}}} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION --create-namespace --dry-run || \
-		helm upgrade --install $${CHART_RELEASE_NAME:-${CHART_NAME}} $${CHART_PATH:-${CHART_REPO_NAME}/${CHART_NAME}} \
+		helm upgrade --install $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION --create-namespace --dry-run)
 
@@ -58,7 +58,7 @@ helm-diff: guard-SERVICE guard-ENV kubernetes-check-context ## Show diff of an i
 		helm diff upgrade --install $${CHART_RELEASE_NAME:-${lastword ${subst /, ,${CHART_PATH}}}} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION || \
-		helm diff upgrade --install $${CHART_RELEASE_NAME:-${CHART_NAME}} $${CHART_PATH:-${CHART_REPO_NAME}/${CHART_NAME}} \
+		helm diff upgrade --install $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION)
 
@@ -69,7 +69,7 @@ helm-install: guard-SERVICE guard-ENV kubernetes-check-context ## Install/Upgrad
 		helm upgrade --install $${CHART_RELEASE_NAME:-${lastword ${subst /, ,${CHART_PATH}}}} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION --create-namespace || \
-		helm upgrade --install $${CHART_RELEASE_NAME:-${CHART_NAME}} $${CHART_PATH:-${CHART_REPO_NAME}/${CHART_NAME}} \
+		helm upgrade --install $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $(SERVICE)/values/$(ENV)/values.yaml \
 		--version $$CHART_VERSION --create-namespace)
 
@@ -78,4 +78,4 @@ helm-uninstall: guard-SERVICE guard-ENV kubernetes-check-context ## Uninstall th
 	@source $(SERVICE)/chart.sh && source $(SERVICE)/values/$(ENV)/chart.sh && \
 		([ -f $(SERVICE)/Chart.yaml ] && \
 		helm uninstall $${CHART_RELEASE_NAME:-${lastword ${subst /, ,${CHART_PATH}}}} --namespace $$CHART_NAMESPACE || \
-		helm uninstall $${CHART_RELEASE_NAME:-${CHART_NAME}} --namespace $$CHART_NAMESPACE)
+		helm uninstall $${CHART_RELEASE_NAME:-$$CHART_NAME} --namespace $$CHART_NAMESPACE)
