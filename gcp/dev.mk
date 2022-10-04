@@ -28,4 +28,4 @@ ci: ## Regen CI (use https://git.sk5.io/skale-5/gitlab-ci)
 cicd-generator: ## Regen CI using CICD generator
 	@[ ! -d tmp/cicd-generator ] && git clone git@git.sk5.io:skale-5/cicd-generator.git tmp/cicd-generator || (cd tmp/cicd-generator && git pull && cd ../..) && \
 	cd tmp/cicd-generator && \
-	make builddocker VARS=./clients/$(CUSTOMER).yaml PROJECT=$(DIR) TAGS="debug,verbose"
+	(make builddocker VARS=./clients/$(CUSTOMER).yaml PROJECT=$(DIR) TAGS="debug,verbose") || (make builddocker VARS=./clients/$(CUSTOMER).yml PROJECT=$(DIR) TAGS="debug,verbose")
