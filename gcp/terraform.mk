@@ -26,15 +26,15 @@ terraform-apply: guard-SERVICE guard-ENV ## Builds or changes infrastructure (SE
 		&& terraform apply -lock-timeout=60s -var-file=tfvars/$(ENV).tfvars
 
 .PHONY: terraform-destroy
-terraform-destroy: guard-SERVICE guard-ENV ## Builds or changes infrastructure (SERVICE=xxx ENV=xxx)
-	@echo -e "$(OK_COLOR)[$(BANNER)] Apply infrastructure$(NO_COLOR)"
+terraform-destroy: guard-SERVICE guard-ENV ## Destroy infrastructure (SERVICE=xxx ENV=xxx)
+	@echo -e "$(OK_COLOR)[$(BANNER)] Destroy infrastructure$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
 		&& terraform init -reconfigure -backend-config=backend-vars/$(ENV).tfvars \
 		&& terraform destroy -lock-timeout=60s -var-file=tfvars/$(ENV).tfvars
 
 .PHONY: terraform-providers-lock
 terraform-providers-lock: guard-SERVICE guard-ENV ## Providers lock (SERVICE=xxx ENV=xxx)
-	@echo -e "$(OK_COLOR)[$(BANNER)] Apply infrastructure$(NO_COLOR)"
+	@echo -e "$(OK_COLOR)[$(BANNER)] Providers lock$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
 		&& terraform init -reconfigure -backend-config=backend-vars/$(ENV).tfvars \
 		&& terraform providers lock -platform=darwin_amd64 -platform=linux_amd64 -platform=darwin_arm64
