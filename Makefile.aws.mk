@@ -17,3 +17,4 @@ include makefiles/aws/terraform.mk
 include makefiles/aws/custom/*.mk
 
 -include $(HOME)/.config/makefiles/*.mk
+-include makefiles_custom/*.mk
