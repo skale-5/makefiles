@@ -19,3 +19,4 @@ include makefiles/gcp/terraform.mk
 include makefiles/gcp/custom/*.mk
 
 -include $(HOME)/.config/makefiles/*.mk
+-include makefiles_custom/*.mk
