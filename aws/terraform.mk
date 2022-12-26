@@ -8,6 +8,7 @@
 terraform-show: guard-SERVICE guard-ENV ## Show infrastructure (SERVICE=xxx ENV=xxx)
 	@echo -e "$(OK_COLOR)[$(APP)] Show infrastructure$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
+		&& ( which tfswitch && tfswitch || true ) \
 		&& terraform init -reconfigure -backend-config=backend_vars/$(ENV).tfvars \
 		&& terraform show
 
@@ -15,6 +16,7 @@ terraform-show: guard-SERVICE guard-ENV ## Show infrastructure (SERVICE=xxx ENV=
 terraform-plan: guard-SERVICE guard-ENV ## Plan infrastructure (SERVICE=xxx ENV=xxx)
 	@echo -e "$(OK_COLOR)[$(BANNER)] Plan infrastructure$(NO_COLOR)"
 	cd $(SERVICE)/terraform \
+		&& ( which tfswitch && tfswitch || true ) \
 		&& terraform init -reconfigure -backend-config=backend_vars/$(ENV).tfvars \
 		&& terraform plan -lock-timeout=60s -var-file=tfvars/$(ENV).tfvars
 
@@ -22,6 +24,7 @@ terraform-plan: guard-SERVICE guard-ENV ## Plan infrastructure (SERVICE=xxx ENV=
 terraform-apply: guard-SERVICE guard-ENV ## Builds or changes infrastructure (SERVICE=xxx ENV=xxx)
 	@echo -e "$(OK_COLOR)[$(BANNER)] Apply infrastructure$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
+		&& ( which tfswitch && tfswitch || true ) \
 		&& terraform init -reconfigure -backend-config=backend_vars/$(ENV).tfvars \
 		&& terraform apply -lock-timeout=60s -var-file=tfvars/$(ENV).tfvars
 
@@ -29,6 +32,7 @@ terraform-apply: guard-SERVICE guard-ENV ## Builds or changes infrastructure (SE
 terraform-destroy: guard-SERVICE guard-ENV ## Builds or changes infrastructure (SERVICE=xxx ENV=xxx)
 	@echo -e "$(OK_COLOR)[$(BANNER)] Apply infrastructure$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
+		&& ( which tfswitch && tfswitch || true ) \
 		&& terraform init -reconfigure -backend-config=backend_vars/$(ENV).tfvars \
 		&& terraform destroy -lock-timeout=60s -var-file=tfvars/$(ENV).tfvars
 
@@ -36,5 +40,6 @@ terraform-destroy: guard-SERVICE guard-ENV ## Builds or changes infrastructure (
 terraform-providers-lock: guard-SERVICE guard-ENV ## Providers lock (SERVICE=xxx ENV=xxx)
 	@echo -e "$(OK_COLOR)[$(BANNER)] Apply infrastructure$(NO_COLOR)"
 	@cd $(SERVICE)/terraform \
+		&& ( which tfswitch && tfswitch || true ) \
 		&& terraform init -reconfigure -backend-config=backend_vars/$(ENV).tfvars \
 		&& terraform providers lock -platform=darwin_amd64 -platform=linux_amd64 -platform=darwin_arm64
