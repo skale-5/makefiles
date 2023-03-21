@@ -18,12 +18,6 @@ cookiecutter-create: ## Create a new environment using Cookiecutter
 	@echo -e "$(OK_COLOR)[$(BANNER)] Create environment$(NO_COLOR)"
 	@cookiecutter git@git.sk5.io:skale-5/cookiecutter/cookiecutter-gcp/cookiecutter-gcp-project.git --output-dir tmp/
 
-.PHONY: ci
-ci: ## Regen CI (use https://git.sk5.io/skale-5/gitlab-ci)
-	@rm -rf gitlab-ci/gitlab-ci && \
-	git clone git@git.sk5.io:skale-5/gitlab-ci.git gitlab-ci/gitlab-ci && \
-	rm -rf gitlab-ci/gitlab-ci/.git
-
 .PHONY: cicd-generator
 cicd-generator: ## Regen CI using CICD generator
 	@mkdir -p ../tmp/ && \
