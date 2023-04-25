@@ -7,17 +7,24 @@ Il est également utilisé pour les repos internes Skale 5 qui nécessitent un M
 
 ## Installer le Makefile dans un repo client existant (fichier .gitmodules absent)
 
-Ajouter le submodule
+Ajouter le submodule :
 
 ```bash
 git submodule add git@git.sk5.io:skale-5/makefiles.git
 ```
 
-Créer un lien avec le Makefile voulu
+Si on veut donner l'accès public à la place :
+
+```bash
+git submodule add git@github.com:skale-5/makefiles.git
+```
+
+Créer un lien avec le Makefile voulu :
 
 ```bash
 ln -s makefiles/Makefile.XXXXX.mk Makefile
 ```
+
 
 
 ## Initialiser les submodules chez un client déjà configuré (fichier .gitmodules présent)
