@@ -6,11 +6,11 @@ include makefiles/common/common.mk
 include makefiles/aws/aws.mk
 include makefiles/custom/*.mk
 
+include makefiles/common/ansible.mk
 include makefiles/common/helm.mk
 include makefiles/common/kustomize.mk
 include makefiles/common/custom/*.mk
 
-include makefiles/aws/ansible.mk
 include makefiles/aws/diagrams.mk
 include makefiles/aws/dev.mk
 include makefiles/aws/terraform.mk

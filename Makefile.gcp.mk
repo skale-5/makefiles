@@ -6,11 +6,11 @@ include makefiles/common/common.mk
 include makefiles/gcp/gcp.mk
 include makefiles/custom/*.mk
 
+include makefiles/common/ansible.mk
 include makefiles/common/helm.mk
 include makefiles/common/kustomize.mk
 include makefiles/common/custom/*.mk
 
-include makefiles/gcp/ansible.mk
 include makefiles/gcp/diagrams.mk
 include makefiles/gcp/dev.mk
 include makefiles/gcp/gcloud.mk

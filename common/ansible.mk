@@ -16,9 +16,8 @@ ansible-init: ## Install requirements
 ansible-deps: guard-SERVICE ## Install dependencies (SERVICE=xxx)
 	@echo -e "$(OK_COLOR)[$(CUSTOMER)] Install dependencies$(NO_COLOR)"
 	@. $(ANSIBLE_VENV)/bin/activate \
-		&& (grep -q "collections:" $(SERVICE)/ansible/roles/requirements.yml \
 		&& ANSIBLE_CONFIG=$(SERVICE)/ansible/ansible.cfg \
-		ansible-galaxy collection install -r $(SERVICE)/ansible/roles/requirements.yml -p $(ANSIBLE_ROLES) --force) \
+		ansible-galaxy collection install -r $(SERVICE)/ansible/roles/requirements.yml -p $(ANSIBLE_ROLES) --force \
 		&& ANSIBLE_CONFIG=$(SERVICE)/ansible/ansible.cfg \
 		ansible-galaxy install -r $(SERVICE)/ansible/roles/requirements.yml -p $(ANSIBLE_ROLES) --force
 
