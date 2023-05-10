@@ -1,4 +1,6 @@
 # makefiles
+[![pipeline status](https://git.sk5.io/skale-5/makefiles/badges/main/pipeline.svg?ignore_skipped=true)](https://git.sk5.io/skale-5/makefiles/-/commits/main)
+[![Latest Release](https://git.sk5.io/skale-5/makefiles/-/badges/release.svg)](https://git.sk5.io/skale-5/makefiles/-/releases)
 
 Ce repo vise à centraliser la gestion des Makefiles utilisés à Skale-5. En effet, les Makefiles sont aujourd'hui peu mis à jour chez les clients.
 Ce repo est intégré comme un submodule git dans les repos d'infrastructure client.
