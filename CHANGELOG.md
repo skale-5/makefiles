@@ -1,3 +1,15 @@
+# [1.1.0](https://git.sk5.io/skale-5/makefiles/compare/v1.0.0...v1.1.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* **helm:** Fix the conditional check before sourcing chart.sh ([7f24cda](https://git.sk5.io/skale-5/makefiles/commit/7f24cda9df057187063a03a0a4e10d295b003c3c))
+
+
+### Features
+
+* deprecate make ci as cicd-generator moves to v2 ([41cdbd6](https://git.sk5.io/skale-5/makefiles/commit/41cdbd65c1dedd8799ed9069fc3e30de63c3bc8b))
+
 # 1.0.0 (2023-05-21)
 
 
