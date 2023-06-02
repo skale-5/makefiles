@@ -11,7 +11,7 @@ ENV=$2
 find_gnu=$(strings "$(which find)" | grep GNU)
 
 if [ -n "${find_gnu}" ]; then
-  files=$(find "${SERVICE}/values.yaml" "${SERVICE}/values/${ENV}" -maxdepth 1 -name "*.yaml" -type f -printf "%p ")
+  files=$(find "${SERVICE}/values.yaml" "${SERVICE}/values/${ENV}" -maxdepth 1 -name "*.y*ml" -type f -printf "%p ")
 else
   echo "On MAC find is not GNU find, you have to install findutils and put it in your path!"
   exit 1
