@@ -1,3 +1,10 @@
+## [1.1.1](https://git.sk5.io/skale-5/makefiles/compare/v1.1.0...v1.1.1) (2023-06-04)
+
+
+### Bug Fixes
+
+* align helm with cicd generator ([16bd95f](https://git.sk5.io/skale-5/makefiles/commit/16bd95f0477a308102f36ea28dcaf94dac0379b6))
+
 # [1.1.0](https://git.sk5.io/skale-5/makefiles/compare/v1.0.0...v1.1.0) (2023-05-23)
 
 
