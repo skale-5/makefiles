@@ -34,7 +34,7 @@ helm-template: guard-SERVICE guard-ENV ## Render chart templates locally and dis
 	@source $(SERVICE)/chart.sh && \
 		{ test -f $(SERVICE)/values/$(ENV)/chart.sh && source $(SERVICE)/values/$(ENV)/chart.sh || true; } && \
 		source makefiles/common/scripts/merge-charts.sh $(SERVICE) $(ENV) && \
-		helm template $$CHART_RELEASE_NAME $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
+		helm template $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $$FILE \
 		--version $$CHART_VERSION
 
@@ -43,7 +43,7 @@ helm-validate: guard-SERVICE guard-ENV kubernetes-check-context ## Simulate the 
 	@source $(SERVICE)/chart.sh && \
 		{ test -f $(SERVICE)/values/$(ENV)/chart.sh && source $(SERVICE)/values/$(ENV)/chart.sh || true; } && \
 		source makefiles/common/scripts/merge-charts.sh $(SERVICE) $(ENV) && \
-		helm upgrade --install $$CHART_RELEASE_NAME $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
+		helm upgrade --install $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $$FILE \
 		--version $$CHART_VERSION --create-namespace --dry-run
 
@@ -52,7 +52,7 @@ helm-diff: guard-SERVICE guard-ENV kubernetes-check-context ## Show diff of an i
 	@source $(SERVICE)/chart.sh && \
 		{ test -f $(SERVICE)/values/$(ENV)/chart.sh && source $(SERVICE)/values/$(ENV)/chart.sh || true; } && \
 		source makefiles/common/scripts/merge-charts.sh $(SERVICE) $(ENV) && \
-		helm diff upgrade --install $$CHART_RELEASE_NAME $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
+		helm diff upgrade --install $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $$FILE \
 		--version $$CHART_VERSION
 
@@ -61,7 +61,7 @@ helm-install: guard-SERVICE guard-ENV kubernetes-check-context ## Install/Upgrad
 	@source $(SERVICE)/chart.sh && \
 		{ test -f $(SERVICE)/values/$(ENV)/chart.sh && source $(SERVICE)/values/$(ENV)/chart.sh || true; } && \
 		source makefiles/common/scripts/merge-charts.sh $(SERVICE) $(ENV) && \
-		helm upgrade --install $$CHART_RELEASE_NAME $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
+		helm upgrade --install $${CHART_RELEASE_NAME:-$$CHART_NAME} $${CHART_PATH:-$$CHART_REPO_NAME/$$CHART_NAME} \
 		--namespace $$CHART_NAMESPACE -f $$FILE \
 		--version $$CHART_VERSION --create-namespace
 
@@ -69,4 +69,4 @@ helm-install: guard-SERVICE guard-ENV kubernetes-check-context ## Install/Upgrad
 helm-uninstall: guard-SERVICE guard-ENV kubernetes-check-context ## Uninstall the release (SERVICE=xxx ENV=xxx)
 	@source $(SERVICE)/chart.sh && \
 		{ test -f $(SERVICE)/values/$(ENV)/chart.sh && source $(SERVICE)/values/$(ENV)/chart.sh || true; } && \
-		helm uninstall $$CHART_RELEASE_NAME --namespace $$CHART_NAMESPACE
+		helm uninstall $${CHART_RELEASE_NAME:-$$CHART_NAME} --namespace $$CHART_NAMESPACE
