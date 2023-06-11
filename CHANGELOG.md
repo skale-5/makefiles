@@ -1,3 +1,10 @@
+## [1.1.2](https://git.sk5.io/skale-5/makefiles/compare/v1.1.1...v1.1.2) (2023-06-11)
+
+
+### Bug Fixes
+
+* activate support for legacy way of handling chart.sh ([6291b4a](https://git.sk5.io/skale-5/makefiles/commit/6291b4af3271812adabaf5d4576cab3366ddc0d1))
+
 ## [1.1.1](https://git.sk5.io/skale-5/makefiles/compare/v1.1.0...v1.1.1) (2023-06-04)
 
 
