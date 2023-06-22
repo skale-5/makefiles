@@ -23,12 +23,13 @@ custom_merge_vars=false
 # shellcheck disable=SC2206
 files_tab=($files)
 
-for f in "${files_tab[@]}"; do
-  if [[ $f != *values.yaml ]]; then
+if [ "${#files_tab[@]}" -ge 2 ]; then
     custom_merge_vars=true
-    break
-  fi
-done
+elif [ "${#files_tab[@]}" -eq 0 ]; then
+  echo "No values found"
+  exit 1
+fi
+
 
 if $custom_merge_vars; then
   # shellcheck disable=SC2086
