@@ -8,7 +8,8 @@ CLUSTER = $(CLUSTER_$(ENV))
 KUBE_CONTEXT = $(KUBE_CONTEXT_$(ENV))
 
 GCP_CURRENT_PROJECT = $(shell gcloud info --format='value(config.project)')
-KUBE_CURRENT_CONTEXT = $(shell kubectl config current-context)
+KUBE_CURRENT_CONTEXT = $(shell kubectl config get-contexts $$(kubectl config current-context) --no-headers | awk '{print $$3}')
+# is in fact the cluster name corresponding to the current context
 
 
 KUBE_VERSION = 1.21.9
