@@ -1,3 +1,16 @@
+# [1.2.0](https://git.sk5.io/skale-5/makefiles/compare/v1.1.2...v1.2.0) (2023-06-25)
+
+
+### Bug Fixes
+
+* **helm:** fix bad values merging ([3fc86f6](https://git.sk5.io/skale-5/makefiles/commit/3fc86f6c05442b76f37d503f6667a9e33b9504bc))
+* **k8s:** use cluster name instead of context name ([35cdbcf](https://git.sk5.io/skale-5/makefiles/commit/35cdbcf430e63728f5b89110cb6122b453f0391d)), closes [#11](https://git.sk5.io/skale-5/makefiles/issues/11)
+
+
+### Features
+
+* update make check ([7a1f3d1](https://git.sk5.io/skale-5/makefiles/commit/7a1f3d1d1ac8228ea51782b7f02ddb9c62d0af55))
+
 ## [1.1.2](https://git.sk5.io/skale-5/makefiles/compare/v1.1.1...v1.1.2) (2023-06-11)
 
 
