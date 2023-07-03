@@ -24,6 +24,7 @@ custom_merge_vars=false
 files_tab=($files)
 
 if [ "${#files_tab[@]}" -ge 2 ]; then
+    echo -e "\e[38;5;214mWARNING\e[0m: using multiple values files will be deprecated. You must use only the « values.yaml » environment file."
     custom_merge_vars=true
 elif [ "${#files_tab[@]}" -eq 0 ]; then
   echo "No values found"
