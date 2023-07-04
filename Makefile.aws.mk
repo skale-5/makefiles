@@ -3,6 +3,7 @@
 include aws.*.mk
 
 include makefiles/common/common.mk
+include makefiles/common/terraform.mk
 include makefiles/aws/aws.mk
 include makefiles/custom/*.mk
 
@@ -13,7 +14,6 @@ include makefiles/common/custom/*.mk
 
 include makefiles/aws/diagrams.mk
 include makefiles/aws/dev.mk
-include makefiles/aws/terraform.mk
 include makefiles/aws/custom/*.mk
 
 -include $(HOME)/.config/makefiles/*.mk

@@ -3,6 +3,7 @@
 include gcp.*.mk
 
 include makefiles/common/common.mk
+include makefiles/common/terraform.mk
 include makefiles/gcp/gcp.mk
 include makefiles/custom/*.mk
 
@@ -15,7 +16,6 @@ include makefiles/gcp/diagrams.mk
 include makefiles/gcp/dev.mk
 include makefiles/gcp/gcloud.mk
 include makefiles/gcp/packer.mk
-include makefiles/gcp/terraform.mk
 include makefiles/gcp/custom/*.mk
 
 -include $(HOME)/.config/makefiles/*.mk
