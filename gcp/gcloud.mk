@@ -17,9 +17,13 @@ gcloud-bucket-create: guard-ENV ## Create bucket for bootstrap
 	@echo -e "$(OK_COLOR)[$(BANNER)] Create bucket for bootstrap$(NO_COLOR)"
 	gsutil mb -p $(GCP_SK5_PROJECT) -c "STANDARD" -l "europe-west1" -b on gs://$(CUSTOMER)-gcloud-tfstates
 
-.PHONY: gcloud-kube-credentials
-gcloud-kube-credentials: guard-ENV ## Generate credentials
+.PHONY: gke-public-get-credentials gcloud-kube-credentials
+gke-public-get-credentials gcloud-kube-credentials: guard-ENV ## Generate credentials
 	@gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT)
+
+.PHONY: gke-private-get-credentials
+gke-private-get-credentials: guard-ENV ## Generate credentials
+	@gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT) --internal-ip
 
 .PHONY: gcloud-os-login
 gcloud-oslogin: guard-FILE ## Set SSH key in Google account (to use OSlogin) (FILE=xxx)
