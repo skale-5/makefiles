@@ -17,12 +17,13 @@ gcloud-bucket-create: guard-ENV ## Create bucket for bootstrap
 	@echo -e "$(OK_COLOR)[$(BANNER)] Create bucket for bootstrap$(NO_COLOR)"
 	gsutil mb -p $(GCP_SK5_PROJECT) -c "STANDARD" -l "europe-west1" -b on gs://$(CUSTOMER)-gcloud-tfstates
 
-.PHONY: gke-public-get-credentials gcloud-kube-credentials
-gke-public-get-credentials gcloud-kube-credentials: guard-ENV ## Generate credentials
-	@gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT)
+.PHONY: gcloud-kube-credentials
+gcloud-kube-credentials: guard-ENV ## Generate credentials
+	@echo -e "\e[38;5;214mWARNING\e[0m: This commande is deprecated and will be removed in a future version, please use gke-get-credentials instead.\n"
+	gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT)
 
-.PHONY: gke-private-get-credentials
-gke-private-get-credentials: guard-ENV ## Generate credentials
+.PHONY: gke-get-credentials
+gke-get-credentials: guard-ENV ## Generate credentials
 	@gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT) --internal-ip
 
 .PHONY: gcloud-os-login
