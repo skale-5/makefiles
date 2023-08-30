@@ -19,7 +19,7 @@ gcloud-bucket-create: guard-ENV ## Create bucket for bootstrap
 
 .PHONY: gcloud-kube-credentials
 gcloud-kube-credentials: guard-ENV ## Generate credentials
-	@echo -e "\e[38;5;214mWARNING\e[0m: This commande is deprecated and will be removed in a future version, please use gke-get-credentials instead.\n"
+	@echo -e "\e[38;5;11mWARNING\e[0m: Use this target only if your cluster have public endpoint enabled and you want to use public endpoint, in other cases, please use gke-get-credentials instead.\n"
 	@gcloud container clusters get-credentials $(CLUSTER) --region $(GCP_REGION) --project $(GCP_PROJECT)
 
 .PHONY: gke-get-credentials
