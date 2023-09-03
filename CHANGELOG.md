@@ -1,3 +1,15 @@
+# [1.3.0](https://git.sk5.io/skale-5/makefiles/compare/v1.2.0...v1.3.0) (2023-09-03)
+
+
+### Bug Fixes
+
+* wrong warning message ([4345219](https://git.sk5.io/skale-5/makefiles/commit/43452199c72781053a864f05363dd5ac56213a6c))
+
+
+### Features
+
+* **gke-credentials:** add new target to get creds of private gke cluster ([2a3900a](https://git.sk5.io/skale-5/makefiles/commit/2a3900ab64a2791461d03e9b6ddc0619fa871a9c))
+
 # [1.2.0](https://git.sk5.io/skale-5/makefiles/compare/v1.1.2...v1.2.0) (2023-06-25)
 
 
