@@ -1,3 +1,10 @@
+# [1.4.0](https://git.sk5.io/skale-5/makefiles/compare/v1.3.0...v1.4.0) (2023-11-12)
+
+
+### Features
+
+* **terraform:** Add "terraform-output" target; Remove ENV requirement from "terraform-providers-lock" target ([bc7b567](https://git.sk5.io/skale-5/makefiles/commit/bc7b5675fb30deadf18cc7bc864dddd4f9f5e96d))
+
 # [1.3.0](https://git.sk5.io/skale-5/makefiles/compare/v1.2.0...v1.3.0) (2023-09-03)
 
 
