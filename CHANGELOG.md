@@ -1,3 +1,15 @@
+# [2.0.0](https://git.sk5.io/skale-5/makefiles/compare/v1.4.0...v2.0.0) (2024-03-28)
+
+
+* Merge branch 'feat/convert-to-helmfile' into 'main' ([a06f44c](https://git.sk5.io/skale-5/makefiles/commit/a06f44c8fc6274aab8bc0c7c454703028087c235))
+
+
+### BREAKING CHANGES
+
+* replace helm commands with helmfile
+
+See merge request skale-5/makefiles!32
+
 # [1.4.0](https://git.sk5.io/skale-5/makefiles/compare/v1.3.0...v1.4.0) (2023-11-12)
 
 
