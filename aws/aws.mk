@@ -4,7 +4,7 @@ ENVS = $(shell ls aws.*.mk | awk -F"." '{ print $$2 }')
 
 AWS_REGION = $(AWS_REGION_$(ENV))
 CLUSTER = $(CLUSTER_$(ENV))
-KUBE_CONTEXT = $(KUBE_CONTEXT_$(ENV)) # is in fact the cluster name
+KUBE_CONTEXT = $(KUBE_CONTEXT_$(ENV))
 
 KUBE_CURRENT_CONTEXT = $(shell kubectl config get-contexts $$(kubectl config current-context) --no-headers | awk '{print $$3}')
 # is in fact the cluster name corresponding to the current context
