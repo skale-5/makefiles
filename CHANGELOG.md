@@ -1,3 +1,10 @@
+## [2.0.1](https://git.sk5.io/skale-5/makefiles/compare/v2.0.0...v2.0.1) (2024-06-23)
+
+
+### Bug Fixes
+
+* **aws:** remove comment causing space in 'KUBE_CONTEXT' var ([9d7573a](https://git.sk5.io/skale-5/makefiles/commit/9d7573acaf29a9fcc637192873621ffc0056f6f9))
+
 # [2.0.0](https://git.sk5.io/skale-5/makefiles/compare/v1.4.0...v2.0.0) (2024-03-28)
 
 
