@@ -18,7 +18,7 @@ helm-diff: guard-SERVICE guard-ENV kubernetes-check-context ## Show diff of an i
 
 .PHONY: helm-install
 helm-install: guard-SERVICE guard-ENV kubernetes-check-context ## Install/Upgrade the release (SERVICE=xxx ENV=xxx)
-	@helmfile apply -f $(SERVICE)/helmfile.yaml -e $(ENV) --skip-deps
+	@helmfile sync -f $(SERVICE)/helmfile.yaml -e $(ENV) --skip-deps
 
 .PHONY: helm-uninstall
 helm-uninstall: guard-SERVICE guard-ENV kubernetes-check-context ## Uninstall the release (SERVICE=xxx ENV=xxx)
