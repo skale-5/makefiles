@@ -1,3 +1,10 @@
+## [2.0.2](https://git.sk5.io/skale-5/makefiles/compare/v2.0.1...v2.0.2) (2024-10-27)
+
+
+### Bug Fixes
+
+* **helm:** align helmfile usage with CICD ([9977f02](https://git.sk5.io/skale-5/makefiles/commit/9977f023314e74346985ebc1974bbb0a1eea2dbb))
+
 ## [2.0.1](https://git.sk5.io/skale-5/makefiles/compare/v2.0.0...v2.0.1) (2024-06-23)
 
 
