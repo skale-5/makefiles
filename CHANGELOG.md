@@ -1,3 +1,10 @@
+## [2.0.3](https://git.sk5.io/skale-5/makefiles/compare/v2.0.2...v2.0.3) (2025-05-11)
+
+
+### Bug Fixes
+
+* **helmfile:** make it compatible with helmfile v1 ([2a903aa](https://git.sk5.io/skale-5/makefiles/commit/2a903aa97d938d8d263d5e0c156ea1f13196111b))
+
 ## [2.0.2](https://git.sk5.io/skale-5/makefiles/compare/v2.0.1...v2.0.2) (2024-10-27)
 
 
